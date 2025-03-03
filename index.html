@@ -141,20 +141,23 @@
     <div class="container">
         <h1>بطولة جيم فيست 2024 🎮</h1>
         
-        <form id="registrationForm">
+        <!-- النموذج مع ID Formspree المدمج -->
+        <form id="registrationForm" action="https://formspree.io/f/mkgodqdq" method="POST">
+            <input type="hidden" name="_language" value="ar">
+            
             <div class="form-group">
                 <label>الاسم الكامل ✍️</label>
-                <input type="text" required placeholder="أدخل اسمك الكامل">
+                <input type="text" name="fullname" required placeholder="أدخل اسمك الكامل">
             </div>
 
             <div class="form-group">
                 <label>العنوان 🏠</label>
-                <textarea required rows="3" placeholder="أدخل عنوانك الكامل"></textarea>
+                <textarea name="address" required rows="3" placeholder="أدخل عنوانك الكامل"></textarea>
             </div>
 
             <div class="form-group">
                 <label>العمر 🔢</label>
-                <input type="number" min="13" max="99" required class="age-input" placeholder="عمرك">
+                <input type="number" name="age" min="13" max="99" required class="age-input" placeholder="عمرك">
             </div>
 
             <div class="form-group">
@@ -169,7 +172,7 @@
                         <p>🚀 الجيل القادم</p>
                     </div>
                 </div>
-                <input type="hidden" id="selectedGame" required>
+                <input type="hidden" id="selectedGame" name="game" required>
             </div>
 
             <button type="submit">سجل الآن! 🏆</button>
@@ -177,17 +180,13 @@
     </div>
 
     <script>
+        // دالة اختيار اللعبة
         function selectGame(element, game) {
             document.querySelectorAll('.game-option').forEach(opt => 
                 opt.classList.remove('selected'));
             element.classList.add('selected');
             document.getElementById('selectedGame').value = game;
         }
-
-        document.getElementById('registrationForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('تم التسجيل بنجاح! حظًا طيبًا! 🎉');
-        });
     </script>
 </body>
 </html>
